@@ -1,4 +1,4 @@
-### RegEx colletion
+### RegEx collection
 
 # IP Digits: 8-Bit int - 0 .. 255
 ByteInt = "(\d|1\d{1,2}|2[0-4]\d|25[0-5])"
