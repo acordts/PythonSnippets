@@ -1,15 +1,17 @@
 ### RegEx collection
 
 # IP Digits: 8-Bit int - 0 .. 255
-ByteInt = "(\d|1\d{1,2}|2[0-4]\d|25[0-5])"
+ByteInt = r"(25[0-5]|(2[0-4]|1?\d)?\d)"
+
+# hexadecimal number
+Hex = r"[\da-fA-F]"
 
 # IPv4 0.0.0.0 .. 255.255.255.255
-Ipv4 = "(?<IPv4>((\d|1\d{1,2}|2[0-4]\d|25[0-5])\.){3}(\d|1\d{1,2}|2[0-4]\d|25[0-5]))$"
-IPv4Seq = r"(25[0-5]|(2[0-4]|1?\d)?\d)"
-IPv4addr = r"({v4}\.){{3}}{v4}".format(v4=IPv4Seq)
+IPv4addr = r"({byteInt}\.){{3}}{byteInt}".format(byteInt=ByteInt)
 
-hex = r"[\da-fA-F]"
-IPv6seq = r"{hex}{{1,4}}".format(hex=hex)
+IPv6seq = r"{hex}{{1,4}}".format(hex=Hex)
+
+# IPv6 adress
 IPv6addr = 
     r"^(({v6}:){{7}}{v6}|"
     r"({v6}:){{1,7}}:|"
@@ -22,5 +24,5 @@ IPv6addr =
     r":((:{v6}){{1,7}}|:)|"
     r"fe80:(:({hex}|{v6})){{0,4}}%[\da-zA-Z]+|"
     r"::(ffff(:0{{1,4}})?:)?{v4addr}|"
-    r"({v6}:){{1,4}}:{v4addr})$".format(v4addr=IPv4addr, v6=IPv6seq, hex=hex)
+    r"({v6}:){{1,4}}:{v4addr})$".format(v4addr=IPv4addr, v6=IPv6seq, hex=Hex)
     
