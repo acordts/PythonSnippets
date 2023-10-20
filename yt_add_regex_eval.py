@@ -1,5 +1,5 @@
 import re
-URLS_FILE = "./urls.txt"
+URLS_FILE = "./yt_add_urls.txt"
 MISS_URLS = "./missed_urls.txt"
 URLS_REGEX = re.compile(r'r+\d+[\w\-\.]+\.googlevideo(\.com)?')
 
